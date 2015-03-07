@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def authentication_user_from_token!
     user_token = request.headers['authentication_token']
-    user_token ||= params[':authentiation_token']
+    user_token ||= params['authentication_token']
     user = user_token && User.find_by_authentication_token(user_token)
     if user
       sign_in user, store: false
