@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20150307042306) do
 
   create_table "addresses", force: :cascade do |t|
@@ -30,6 +29,12 @@ ActiveRecord::Schema.define(version: 20150307042306) do
   end
 
   add_index "addresses", ["addressable_id", "addressable_type"], name: "index_addresses_on_addressable_id_and_addressable_type"
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.integer  "event_id"
@@ -58,11 +63,6 @@ ActiveRecord::Schema.define(version: 20150307042306) do
     t.boolean  "business_card", default: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-
-  create_table "companies", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "jobs", force: :cascade do |t|

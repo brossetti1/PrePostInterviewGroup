@@ -1,6 +1,35 @@
+# == Route Map
+#
+#                   Prefix Verb   URI Pattern                    Controller#Action
+#         new_user_session GET    /users/sign_in(.:format)       sessions#new
+#             user_session POST   /users/sign_in(.:format)       sessions#create
+#     destroy_user_session DELETE /users/sign_out(.:format)      sessions#destroy
+#            user_password POST   /users/password(.:format)      devise/passwords#create
+#        new_user_password GET    /users/password/new(.:format)  devise/passwords#new
+#       edit_user_password GET    /users/password/edit(.:format) devise/passwords#edit
+#                          PATCH  /users/password(.:format)      devise/passwords#update
+#                          PUT    /users/password(.:format)      devise/passwords#update
+# cancel_user_registration GET    /users/cancel(.:format)        registrations#cancel
+#        user_registration POST   /users(.:format)               registrations#create
+#    new_user_registration GET    /users/sign_up(.:format)       registrations#new
+#   edit_user_registration GET    /users/edit(.:format)          registrations#edit
+#                          PATCH  /users(.:format)               registrations#update
+#                          PUT    /users(.:format)               registrations#update
+#                          DELETE /users(.:format)               registrations#destroy
+#
+
 Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations",
                                       :sessions => "sessions" }
+
+
+
+
+  resources :company, only: [:index, :create, :index, :update, :destroy] do
+    resources :job, only: [:index, :create, :index, :update, :destroy] do
+      resources :event, only: [:index, :create, :index, :update, :destroy]
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

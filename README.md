@@ -28,7 +28,7 @@ Things you may want to cover:
 
 ## API End Point
 
-<strong>pre-post-interview.herokuapp.com</strong>
+<strong>https://pre-post-interview.herokuapp.com</strong>
 
 #Users
 
