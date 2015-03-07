@@ -30,6 +30,10 @@ Things you may want to cover:
 
 <strong>https://pre-post-interview.herokuapp.com</strong>
 
+## local development server
+
+<strong>http://brian.t.proxylocal.com</strong>
+
 #Users
 
 ##**sign up/create user**
@@ -38,10 +42,11 @@ Things you may want to cover:
 `POST /users`
 
 ```json
-{"user": 
-    {"email": "testing@testing3.com", 
-     "password": "password",
-     "password_confirmation": "password"
+{
+	"user": {
+	 	"email": "testing@testing3.com", 
+     	"password": "password",
+     	"password_confirmation": "password"
     }
 }
 ```
@@ -52,7 +57,7 @@ creates a user, returns a success message, email, and authentication token.
 
 ```json
 {
-"user": {
+	"user": {
 		 "email": "testing@testing.com",
 		 "authentication_token": "xV47wpXmfMB4zMCL3s-k"
 		}

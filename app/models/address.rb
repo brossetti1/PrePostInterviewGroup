@@ -2,21 +2,21 @@
 #
 # Table name: addresses
 #
-#  id               :integer          not null, primary key
-#  street1          :string
-#  street2          :string
-#  city             :string(64)
-#  state            :string(64)
-#  zipcode          :string(16)
-#  country          :string(64)
-#  full_address     :string
-#  addressable_id   :integer
-#  addressable_type :string
-#  created_at       :datetime
-#  updated_at       :datetime
-#  deleted_at       :datetime
+#  id           :integer          not null, primary key
+#  street1      :string
+#  street2      :string
+#  city         :string(64)
+#  state        :string(64)
+#  zipcode      :string(16)
+#  full_address :string
+#  created_at   :datetime
+#  updated_at   :datetime
+#  deleted_at   :datetime
+#  user_id      :integer
+#  contact_id   :integer
 #
 
 class Address < ActiveRecord::Base
-  belongs_to :addressable, :polymorphic => true
+  belongs_to :contact
+  belongs_to :user
 end

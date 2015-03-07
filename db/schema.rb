@@ -11,33 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150307150745) do
-=======
-ActiveRecord::Schema.define(version: 20150307150718) do
->>>>>>> 91ed4bd592bb6baef34adb7f4b59524de2cd9c99
+ActiveRecord::Schema.define(version: 20150307181543) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street1"
     t.string   "street2"
-    t.string   "city",             limit: 64
-    t.string   "state",            limit: 64
-    t.string   "zipcode",          limit: 16
-    t.string   "country",          limit: 64
+    t.string   "city",         limit: 64
+    t.string   "state",        limit: 64
+    t.string   "zipcode",      limit: 16
     t.string   "full_address"
-    t.integer  "addressable_id"
-    t.string   "addressable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "deleted_at"
+    t.integer  "user_id"
+    t.integer  "contact_id"
   end
-
-  add_index "addresses", ["addressable_id", "addressable_type"], name: "index_addresses_on_addressable_id_and_addressable_type"
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -67,6 +61,8 @@ ActiveRecord::Schema.define(version: 20150307150718) do
     t.boolean  "business_card", default: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.integer  "job_id"
+    t.integer  "user_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -79,6 +75,7 @@ ActiveRecord::Schema.define(version: 20150307150718) do
     t.integer  "company_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "user_id"
   end
 
   create_table "resumes", force: :cascade do |t|

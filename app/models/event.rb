@@ -14,10 +14,13 @@
 #  business_card :boolean          default("f")
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  job_id        :integer
+#  user_id       :integer
 #
 
 class Event < ActiveRecord::Base
   belongs_to :job
   has_many :contacts, :dependent => :destroy
-  has_one :address, :dependent => :destroy, :as => :addressable, :class_name => "Address"
+  has_one :address, :dependent => :destroy
+  belongs_to :user
 end

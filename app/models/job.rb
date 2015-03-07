@@ -12,11 +12,13 @@
 #  company_id    :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  user_id       :integer
 #
 
 class Job < ActiveRecord::Base
   has_many :events
   belongs_to :company
+  belongs_to :user
   serialize :pro
   serialize :con
 end
