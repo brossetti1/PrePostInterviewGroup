@@ -5,8 +5,6 @@
 #  id            :integer          not null, primary key
 #  job_title     :string
 #  lead_source   :string
-#  pro           :string
-#  con           :string
 #  short_summary :text
 #  salary        :integer
 #  company_id    :integer
@@ -21,9 +19,11 @@ class Job < ActiveRecord::Base
   belongs_to :user
   has_one :address, dependent: :destroy
 
+  has_many :pros
+  has_many :cons
 
   serialize :pro
   serialize :con
-end
 
+end
 
