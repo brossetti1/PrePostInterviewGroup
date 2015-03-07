@@ -37,7 +37,8 @@ Company.all.to_a.each do |company|
       short_summary: Faker::Lorem.sentence(3, true, 4),
       salary: Money.new(random_salary, "USD"),
       company_id: company.id,
-      user_id: company.user_id)
+      user_id: company.user_id,
+      )
   end
 end
 
@@ -62,7 +63,8 @@ Job.all.to_a.each do |job|
       feedback: random_bool,
       business_card: random_bool,
       job_id: job.id,
-      user_id: job.user_id)
+      user_id: job.user_id
+      )
   end
 end
 
@@ -92,7 +94,8 @@ User.all.to_a.each do |user|
     state: Faker::Address.state_abbr,
     zipcode: Faker::Address.zip.to_i,
     user_id: user.id,
-    contact_id: nil
+    contact_id: nil,
+    job_id: nil
   )
 end
 
@@ -104,7 +107,21 @@ Contact.all.to_a.each do |contact|
     state: Faker::Address.state_abbr,
     zipcode: Faker::Address.zip.to_i,
     user_id: nil,
-    contact_id: contact.id
+    contact_id: contact.id,
+    job_id: nil
+  )
+end
+
+Job.all.to_a.each do |job|
+  Address.create(
+    street1: Faker::Address.street_address,
+    street2: Faker::Address.secondary_address,
+    city: Faker::Address.city,
+    state: Faker::Address.state_abbr,
+    zipcode: Faker::Address.zip.to_i,
+    user_id: nil,
+    contact_id: nil,
+    job_id: job.id
   )
 end
 

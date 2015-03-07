@@ -16,9 +16,14 @@
 #
 
 class Job < ActiveRecord::Base
-  has_many :events
+  has_many :events, dependent: :destroy
   belongs_to :company
   belongs_to :user
+  has_one :address, dependent: :destroy
+
+
   serialize :pro
   serialize :con
 end
+
+

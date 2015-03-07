@@ -14,9 +14,10 @@
 #  deleted_at   :datetime
 #  user_id      :integer
 #  contact_id   :integer
-#
+#  job_id       :integer
 
 class Address < ActiveRecord::Base
   belongs_to :contact
   belongs_to :user
+  belongs_to :job
 end

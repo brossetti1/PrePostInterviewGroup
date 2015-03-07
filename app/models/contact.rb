@@ -18,7 +18,7 @@
 #
 
 class Contact < ActiveRecord::Base
-  has_many  :addresses, :dependent => :destroy
+  has_many  :addresses,  dependent: :destroy
   belongs_to :event
   belongs_to :user
 end

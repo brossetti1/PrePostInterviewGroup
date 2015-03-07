@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   before_save :ensure_authentication_token
-  has_one :address, dependent: :destroy
+  has_one :address
   has_one :contact
   has_many :companies
   has_many :jobs
