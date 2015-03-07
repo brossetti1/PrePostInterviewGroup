@@ -44,7 +44,7 @@ Things you may want to cover:
 ```json
 {
 	"user": {
-	 	"email": "testing@testing3.com", 
+	 	"email": "testing@testing3.com",
      	"password": "password",
      	"password_confirmation": "password"
     }
@@ -118,3 +118,34 @@ allows a user to sign in. optionally, you can pass username or email as `:login 
 
 ####Response
 currently, there is no response on sign out because each request handles every api call.
+
+
+##**create new company**
+
+####Request
+
+
+`POST /company`
+
+
+```json
+{
+    "authentication_token": "xV47wpXmfMB4zMCL3s-k",
+    "name": "Delta"
+}
+```
+
+allows a user to create a new company.
+
+####Response
+
+`Status: 201 Created`
+
+```json
+{
+  "company": {
+    "id": 3,
+    "name": "Delta"
+  }
+}
+```
