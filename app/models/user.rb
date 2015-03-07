@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   before_save :ensure_authentication_token
   has_one :address, :as => :addressable
+  has_one :contact
 
 
 

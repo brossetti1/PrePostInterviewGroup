@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307035928) do
+ActiveRecord::Schema.define(version: 20150307042306) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street1"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20150307035928) do
     t.string   "zipcode",          limit: 16
     t.string   "country",          limit: 64
     t.string   "full_address"
-    t.string   "address_type",     limit: 16
     t.integer  "addressable_id"
     t.string   "addressable_type"
     t.datetime "created_at"
@@ -30,6 +29,21 @@ ActiveRecord::Schema.define(version: 20150307035928) do
   end
 
   add_index "addresses", ["addressable_id", "addressable_type"], name: "index_addresses_on_addressable_id_and_addressable_type"
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.string   "first_name",      limit: 64
+    t.string   "last_name",       limit: 64
+    t.string   "title",           limit: 64
+    t.string   "email",           limit: 64
+    t.string   "phone",           limit: 32
+    t.string   "mobile",          limit: 32
+    t.boolean  "do_not_call",                 default: false
+    t.string   "background_info", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events_tables", force: :cascade do |t|
     t.text     "research"
