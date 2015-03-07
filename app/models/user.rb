@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   before_save :ensure_authentication_token
+  has_one :address, :as => :addressable
 
 
 

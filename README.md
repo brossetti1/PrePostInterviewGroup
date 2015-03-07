@@ -88,10 +88,11 @@ allows a user to sign in. optionally, you can pass username or email as `:login 
 
 ```json
 {
-	"success": true,
-	"auth_token": "xV47wpXmfMB4zMCL3s-k",
-	"username": null,
-	"email": "testing@testing.com"
+	"user": {
+		"username": null,
+		"email": "testing@testing.com",
+		"authentication_token": "uvGRGDE4eYe_zoLR95QJ"
+	}
 }
 ```
 
