@@ -3,7 +3,7 @@ class CompanyController < ApplicationController
 
   def index
     @companies = Company.all
-    render "companies/index.json.jbuilder", status: :ok
+    render "company/index.json.jbuilder", status: :ok
   end
 
   def create
