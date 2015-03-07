@@ -24,5 +24,89 @@ Things you may want to cover:
 * ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+# Hackathon
+
+## API End Point
+
+<strong>to be determined</strong>
+
+#Users
+
+##**sign up/create user**
+####Request
+
+`POST /users`
+
+```json
+"user": {
+	"email": "testing@testing.com",
+	"password": "password",
+}
+```
+####Response
+`Status: 201 Created`
+
+creates a user, returns a success message, email, and authentication token.
+
+```json
+{
+"user": {
+		 "email": "testing@testing.com",
+		 "authentication_token": "xV47wpXmfMB4zMCL3s-k"
+		}
+}
+```
+error examples:
+
+```json
+{
+	"messages": [
+		"Email can't be blank"
+	]
+}
+```
+##**sign in**
+
+####Request
+
+
+`POST /users/sign_in`
+
+
+```json
+"user": {
+	"email": "testing@testing.com",
+	"password": "password",
+}
+```
+
+allows a user to sign in. optionally, you can pass username or email as `:login `or `:username` to the `users/sign_in` route and get a successful sign in if the parameter matches either the email or username of the user and the passwor d is correct.
+
+####Response
+
+`Status: 200 OK`
+
+```json
+{
+	"success": true,
+	"auth_token": "xV47wpXmfMB4zMCL3s-k",
+	"username": null,
+	"email": "testing@testing.com"
+}
+```
+
+
+##**log out**
+
+####Request
+
+`DELETE users/sign_out`
+
+```json
+{
+    "authentication_token": "xV47wpXmfMB4zMCL3s-k"
+}
+```
+
+####Response
+currently, there is no response on sign out because each request handles every api call.
