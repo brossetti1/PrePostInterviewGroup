@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  respond_to :json
 
   def create
     @user = User.new(user_params)
@@ -11,6 +12,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :username)
+    params.require(:user).permit(:email, :password, :password_confirmation, :username)
   end
 end

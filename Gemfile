@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'rack-cors'
 
 #for authentication
 gem 'devise'
@@ -30,6 +31,7 @@ gem 'devise'
 # gem 'devise_invitable', '~> 1.3.4'
 # for authorization
 # gem 'cancan'
+gem 'money'
 
 gem 'pry-rails'
 # Use ActiveModel has_secure_password
@@ -63,10 +65,10 @@ group :development, :test do
   gem 'bullet'
   #create external tunnel to localhost
   gem 'ngrok-tunnel'
+
 end
 
 group :production do
-  gem 'rack-cors' # Frontend Support
   gem 'pg'
   gem 'rails_12factor'
 end

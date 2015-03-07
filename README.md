@@ -38,9 +38,11 @@ Things you may want to cover:
 `POST /users`
 
 ```json
-"user": {
-	"email": "testing@testing.com",
-	"password": "password",
+{"user": 
+    {"email": "testing@testing3.com", 
+     "password": "password",
+     "password_confirmation": "password"
+    }
 }
 ```
 ####Response
