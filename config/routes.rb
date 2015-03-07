@@ -19,6 +19,30 @@
 #
 
 Rails.application.routes.draw do
+  get 'events/index'
+
+  get 'events/create'
+
+  get 'events/update'
+
+  get 'events/destroy'
+
+  get 'jobs/index'
+
+  get 'jobs/create'
+
+  get 'jobs/update'
+
+  get 'jobs/destroy'
+
+  get 'companies/index'
+
+  get 'companies/create'
+
+  get 'companies/update'
+
+  get 'companies/destroy'
+
   devise_for :users, :controllers => {:registrations => "registrations",
                                       :sessions => "sessions" }
 
