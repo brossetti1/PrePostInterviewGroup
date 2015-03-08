@@ -121,7 +121,6 @@ error examples:
 }
 ```
 
-allows a user to sign in. optionally, you can pass username or email as `:login `or `:username` to the `users/sign_in` route and get a successful sign in if the parameter matches either the email or username of the user and the passwor d is correct.
 
 ####Response
 
