@@ -1,8 +1,8 @@
 class CompanyController < ApplicationController
   before_action :authentication_user_from_token!
+  before_action :set_companies
 
   def index
-    @companies = Company.all
     render "company/index.json.jbuilder", status: :ok
   end
 
@@ -23,5 +23,36 @@ class CompanyController < ApplicationController
 
   end
 
+  private
+  def set_companies
+    @companies = current_user.companies
+  end
 
 end
+
+
+
+# user_id
+# @companies.each do |company|
+#   puts company.id
+#   puts company.name
+#   company.jobs.each do |job|
+#     job.id
+#     job.job_title
+#     job.lead_source
+#     job.short_summary
+#     job.salary
+#     job.events.each do |event|
+#       event.id
+#       event.research
+#       event.key_findings
+#       event.takeaways
+#       event.outcome
+#       event.thankyou_note
+#       event.follow_up
+#       event.referral
+#       event.feedback
+#       event.business_card
+  
+#   end
+# end

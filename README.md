@@ -98,7 +98,7 @@ allows a user to sign in. optionally, you can pass username or email as `:login 
 ```json
 {
 	"user": {
-		"user_id": "2"
+		"user_id": "2",
 		"username": null,
 		"email": "testing@testing.com",
 		"authentication_token": "uvGRGDE4eYe_zoLR95QJ"
@@ -181,7 +181,7 @@ allows a user to create a new company.
 ```json
 {
   	"job": {
-  		"job_id": "2"
+  		"job_id": "2",
 	  	"job_title": "testingstuff",
 	  	"lead_source": "testingstuff",
 	  	"short_summary": "testingstuff",
