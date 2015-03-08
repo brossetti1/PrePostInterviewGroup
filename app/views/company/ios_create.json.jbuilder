@@ -7,7 +7,6 @@ json.company do
 	json.lead_source @job.lead_source
 	json.short_summary @job.short_summary
 	json.salary @job.salary
-	binding.pry
 	json.pros JSON.parse(@job.pros.pluck(:pro).first) if @pro
 	json.cons JSON.parse(@job.cons.pluck(:con).first) if @con
 

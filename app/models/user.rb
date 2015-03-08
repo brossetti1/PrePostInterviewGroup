@@ -34,7 +34,18 @@ class User < ActiveRecord::Base
 
 
 
+  def relative_event_date_scheduler(pre_num = 2, post_num = 2)
+    events = filtered_events(self)
+    events.select do |event| 
+      Time.now.between?(event.interview_date-pre_num.days, event.interview_date+post_num.days)
+    end
+  end
 
+  def filtered_events(user)
+    user.events.select do |event| 
+      event unless event.interview_date.nil?
+    end
+  end
 
   def add_address
     address = Address.new(user_id: self.id)

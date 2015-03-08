@@ -19,7 +19,7 @@
 #       company_job_events GET    /company/:company_id/jobs/:job_id/events(.:format)     events#index
 #                          POST   /company/:company_id/jobs/:job_id/events(.:format)     events#create
 #        company_job_event PATCH  /company/:company_id/jobs/:job_id/events/:id(.:format) events#update
-#                          PUT    /company/ :company_id/jobs/:job_id/events/:id(.:format) events#update
+#                          PUT    /company/:company_id/jobs/:job_id/events/:id(.:format) events#update
 #                          DELETE /company/:company_id/jobs/:job_id/events/:id(.:format) events#destroy
 #             company_jobs GET    /company/:company_id/jobs(.:format)                    jobs#index
 #                          POST   /company/:company_id/jobs(.:format)                    jobs#create
@@ -34,29 +34,35 @@
 #                          PUT    /company/:id(.:format)                                 company#update
 #                          DELETE /company/:id(.:format)                                 company#destroy
 #           company_detail GET    /company_detail(.:format)                              company#companies
-#           update_profile POST   /user_profile(.:format)                                user_profile#update
+#               ios_create POST   /icompany(.:format)                                    company#ios_create
+#           update_profile PATCH  /user_profile(.:format)                                user_profile#update
 #          destroy_profile DELETE /user_profile(.:format)                                user_profile#destroy
 #             show_profile GET    /user_profile(.:format)                                user_profile#show
+#          upcoming_events GET    /upcoming_events(.:format)                             events#upcoming_events
 #
 
 Rails.application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations",
                                       :sessions => "sessions" }
 
-
+  #base restful crud routes
   resources :company, only: [:index, :create, :show, :update, :destroy] do
     resources :jobs, only: [:index, :create, :show, :update, :destroy] do
       resources :events, only: [:index, :create, :index, :update, :destroy]
     end
   end
 
+  #extra company routes for ios vs front end flexibility
   get 'company_detail', to: 'company#companies', as: :company_detail
   post 'icompany', to: 'company#ios_create', as: :ios_create
   
+  #routes for profile
   patch 'user_profile', to: 'user_profile#update', as: :update_profile
   delete 'user_profile', to: 'user_profile#destroy', as: :destroy_profile
   get 'user_profile', to: 'user_profile#show', as: :show_profile
-  
+
+  #main route for heart of app, upcoming events based on interview date
+  get 'upcoming_events', to: 'events#upcoming_events', as: :upcoming_events
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

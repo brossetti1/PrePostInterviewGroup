@@ -3,6 +3,10 @@ class JobsController < ApplicationController
   before_action :set_company, only: [:create, :index]
   before_action :set_job, only: [:update, :destroy, :show]
 
+  def upcoming_events
+    #route for dashboard view of events that are coming up pre and post interview (based off of InterviewDate)
+  end
+
   def index
     @jobs = @company.jobs
     if @company.nil?

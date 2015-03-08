@@ -9,31 +9,32 @@
 
 2.times do |n|
   User.create(
-    username: "fake_user_#{n}",
+    username: Faker::Internet.user_name,
     email: Faker::Internet.email,
     password: 'password')
 end
 
 User.all.to_a.each do |user|
-  2.times do
+  10.times do
     Company.create(
       name: Faker::Company.name,
       user_id: user.id)
   end
 end
 
+def random_times(num)
+  rand(num) + 1
+end
 
 def random_salary
   rand(70000..13000)
 end
 
 Company.all.to_a.each do |company|
-  3.times do
+  random_times(4).times do
     Job.create(
       job_title: Faker::Name.title,
       lead_source: Faker::Name.name,
-
-      
       short_summary: Faker::Lorem.sentence(3, true, 4),
       salary: Money.new(random_salary, "USD"),
       company_id: company.id,
@@ -51,9 +52,6 @@ def random_date
   DateTime.now + random_days.days
 end
 
-def random_times(num)
-  rand(num) + 1
-end
 
 Job.all.to_a.each do |job|
   Con.create(job_id: job.id,
