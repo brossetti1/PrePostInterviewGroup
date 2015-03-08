@@ -22,6 +22,9 @@ User.all.to_a.each do |user|
   end
 end
 
+def random_times(num)
+  rand(num) + 1
+end
 
 def random_salary
   rand(70000..13000)
@@ -49,10 +52,6 @@ end
 def random_date
   random_days = rand(14) + 1
   DateTime.now + random_days.days
-end
-
-def random_times(num)
-  rand(num) + 1
 end
 
 Job.all.to_a.each do |job|
