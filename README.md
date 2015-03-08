@@ -58,8 +58,8 @@ creates a user, returns a success message, email, and authentication token.
 ```json
 {
 	"user": {
-		 "email": "testing@testing.com",
-		 "authentication_token": "xV47wpXmfMB4zMCL3s-k"
+		"email": "testing@testing.com",
+		"authentication_token": "xV47wpXmfMB4zMCL3s-k"
 		}
 }
 ```
@@ -81,9 +81,11 @@ error examples:
 
 
 ```json
-"user": {
-	"email": "testing@testing.com",
-	"password": "password",
+{
+	"user": {
+		"email": "testing@testing.com",
+		"password": "password",
+	   }
 }
 ```
 
@@ -96,6 +98,7 @@ allows a user to sign in. optionally, you can pass username or email as `:login 
 ```json
 {
 	"user": {
+		"user_id": "2"
 		"username": null,
 		"email": "testing@testing.com",
 		"authentication_token": "uvGRGDE4eYe_zoLR95QJ"
@@ -147,5 +150,56 @@ allows a user to create a new company.
     "id": 3,
     "name": "Delta"
   }
+}
+```
+
+##**create new company**
+
+####Request
+
+
+`POST /company/company_id/jobs`
+
+```json
+{
+ 	"job": 
+    	{
+    	"job_title": "testingstuff", 
+    	"lead_source": "testingstuff",
+    	"pros": ["testing pro create","testprocreate","test_pro_create"],
+    	"cons": ["testing pro create","testprocreate","test_pro_create"],
+    	"short_summary": "testingstuff", 
+    	"salary": 1425352
+    }
+}
+```
+
+####Response
+
+`Status: 201 Created`
+
+```json
+{
+  	"job": {
+  		"job_id": "2"
+	  	"job_title": "testingstuff",
+	  	"lead_source": "testingstuff",
+	  	"short_summary": "testingstuff",
+	  	"salary": 1425352,
+	  	"cons": [
+	  		"testing pro create",
+	  		"testprocreate",
+	  		"test_pro_create"
+	  	],
+	  	"pros": [
+			"testing pro create",
+			"testprocreate",
+			"test_pro_create"
+      	],
+	  	"company_id": 1,
+	  	"created_at": "2015-03-08T00:05:13.312Z",
+	  	"updated_at": "2015-03-08T00:05:13.312Z",
+	  	"user_id": 1
+	}
 }
 ```

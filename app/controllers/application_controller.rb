@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
 
 
   def authentication_user_from_token!
-    binding.pry
     user_token = request.headers['HTTP_AUTHENTICATION_TOKEN'] || request.headers['authentication_token']
     user_token ||= params['authentication_token']
     user = user_token && User.find_by_authentication_token(user_token)

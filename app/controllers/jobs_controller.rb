@@ -4,9 +4,12 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:update, :destroy, :show]
 
   def index
-    # @jobs = current_user.jobs
-    # render "jobs/index.json.jbuilder" unless @jobs.nil?
-    # render json: { message: "there are currently no jobs for this user" }, status: :
+    @jobs = current_user.jobs
+    if @jobs.nil?
+      render json: { message: "there are currently no jobs for this user" }, status: :
+    else
+      render "jobs/index.json.jbuilder", status: :created
+    end
   end
 
   def create
@@ -53,7 +56,7 @@ class JobsController < ApplicationController
   end
 
   def make_pros(job_id)
-    ary = params[:pro]['pros'] || nil
+    ary = params[:job]['pros'] || nil
     if ary
       ary.each do |text|
         Pro.create(pro:text, job_id: job_id)
@@ -62,7 +65,7 @@ class JobsController < ApplicationController
   end
 
   def make_cons(job_id)
-    ary = params[:con]['cons'] || nil
+    ary = params[:job]['cons'] || nil
     if ary
       ary.each do |text|
         Con.create(con:text, job_id: job_id)
@@ -71,28 +74,3 @@ class JobsController < ApplicationController
   end
 
 end
-
-
-
-#test data:
-
-#create job
-# {
-#  "job": 
-#     {
-#       "job_title": "testingstuff", 
-#       "lead_source": "testingstuff", 
-#       "short_summary": "testingstuff", 
-#       "salary": 1425352
-#     },
-    
-#  "pro": 
-#     {
-#       "pro": ["testing pro create","testprocreate","test_pro_create"]
-#     },
-    
-#   "con":
-#     {
-#       "con": ["testing pro create","testprocreate","test_pro_create"]
-#     }
-# }
