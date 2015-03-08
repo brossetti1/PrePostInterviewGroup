@@ -49,8 +49,8 @@ This application is geared towards people currently in the process of looking fo
 
 an authentication token will be generated when a user is created. the authentication token will be passed from the backend when a user successfully logs in. After login, the authentication token will have to come with each request in either of the below formats in order to avoid an "authentication failure". The formats are as follows:
 	
-	*sent in the **header** as "authentication_token": "xV47wpXmfMB4zMCL3s-k"
-	*sent in the **body** as "authentication_token": "xV47wpXmfMB4zMCL3s-k"
+*sent in the **header** as "authentication_token": "xV47wpXmfMB4zMCL3sk"
+*unnested and sent in the **body** as "authentication_token": "xV47wpXmfMB4zMCL3s-k"
 
 ##Responses
 

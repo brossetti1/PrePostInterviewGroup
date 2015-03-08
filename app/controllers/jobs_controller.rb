@@ -6,7 +6,7 @@ class JobsController < ApplicationController
   def index
     @jobs = current_user.jobs
     if @jobs.nil?
-      render json: { message: "there are currently no jobs for this user" }, status: :
+      render json: { message: "there are currently no jobs for this user" }, status: :no_content
     else
       render "jobs/index.json.jbuilder", status: :created
     end
