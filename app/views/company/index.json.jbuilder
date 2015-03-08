@@ -1,4 +1,3 @@
-
 json.array! @companies do |company|
 	json.(company, :id, :name)
 	json.jobs company.jobs do |job|

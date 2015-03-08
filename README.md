@@ -45,9 +45,21 @@ This application is geared towards people currently in the process of looking fo
 
 <strong>http://brian.t.proxylocal.com</strong>
 
+##Using Authentication Tokens
+
+an authentication token will be generated when a user is created. the authentication token will be passed from the backend when a user successfully logs in. After login, the authentication token will have to come with each request in either of the below formats in order to avoid an "authentication failure". The formats are as follows:
+	
+	*sent in the **header** as "authentication_token": "xV47wpXmfMB4zMCL3s-k"
+	*sent in the **body** as "authentication_token": "xV47wpXmfMB4zMCL3s-k"
+
+##Responses
+
+all responses from the API will be delivered in json format.
+
 #Users
 
 ##**sign up/create user**
+
 ####Request
 
 `POST /users`
@@ -61,6 +73,7 @@ This application is geared towards people currently in the process of looking fo
     }
 }
 ```
+
 ####Response
 `Status: 201 Created`
 
@@ -116,24 +129,12 @@ allows a user to sign in. optionally, you can pass username or email as `:login 
 	}
 }
 ```
-from this point forward, any request sent by a user needs to include the authentication_token in the following format:
-	
-	- header format
-	  * Content-Type - application/json
-	  * 
-
 
 ##**log out**
 
 ####Request
 
 `DELETE users/sign_out`
-
-```json
-{
-    "authentication_token": "xV47wpXmfMB4zMCL3s-k"
-}
-```
 
 ####Response
 currently, there is no response on sign out because each request handles every api call.
@@ -149,7 +150,6 @@ currently, there is no response on sign out because each request handles every a
 
 ```json
 {
-    "authentication_token": "xV47wpXmfMB4zMCL3s-k",
     "name": "Delta"
 }
 ```
@@ -229,12 +229,6 @@ allows a user to create a new company.
 
 `GET /company`
 
-
-{
-	"authentication_token": "MzqJ3rnpKyaVQE3cEwey"
-}
-
-
 ####Response
 
 `Status: 200 ok`
@@ -284,5 +278,5 @@ allows a user to create a new company.
         "lead_source": "Ivy Wunsch",
         "short_summary": "Curvo tardus thalassinus auris suggero solium.",
         "salary": 0,
-        "events": […
+        "events": [
 ```
