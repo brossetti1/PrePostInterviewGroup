@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :authentication_user_from_token!
+  
 
   def index
 

@@ -204,7 +204,7 @@ allows a user to create a new company.
 
 ####Request
 
-`GET /companies`
+`GET /company_detail`
 
 ####Response
 

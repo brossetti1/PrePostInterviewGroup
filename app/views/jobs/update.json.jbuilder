@@ -3,7 +3,7 @@ json.job_title @job.job_title
   json.pro @job.pro
   json.con @job.con
   json.short_summary @job.short_summary
-  json.salary @job.salarys @
+  json.salary @job.salarys
   json.company_id @job.company_id
   json.created_at @job.created_at
   json.updated_at @job.updated_at

@@ -4,8 +4,8 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:update, :destroy, :show]
 
   def index
-    @jobs = current_user.jobs
-    if @jobs.nil?
+    @jobs = @company.jobs
+    if @company.nil?
       render json: { message: "there are currently no jobs for this user" }, status: :no_content
     else
       render "jobs/index.json.jbuilder", status: :created
@@ -14,7 +14,7 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-    @job.company_id = @co.id; @job.user_id = current_user.id 
+    @job.company_id = @coompany.id; @job.user_id = current_user.id 
     @job.save; make_pros(@job.id); make_cons(@job.id)
     if @job.id?
       render "jobs/create.json.jbuilder", status: :created
@@ -44,7 +44,7 @@ class JobsController < ApplicationController
 
   private
   def set_company
-    @co = Company.find(params[:company_id])
+    @company = Company.find(params[:company_id])
   end
 
   def set_job

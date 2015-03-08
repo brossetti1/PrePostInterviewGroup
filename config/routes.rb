@@ -33,7 +33,10 @@
 #                          PATCH  /company/:id(.:format)                                 company#update
 #                          PUT    /company/:id(.:format)                                 company#update
 #                          DELETE /company/:id(.:format)                                 company#destroy
-#                companies GET    /company-detail(.:format)                              company#companies
+#           company_detail GET    /company_detail(.:format)                              company#companies
+#           update_profile POST   /user_profile(.:format)                                user_profile#update
+#          destroy_profile DELETE /user_profile(.:format)                                user_profile#destroy
+#             show_profile GET    /user_profile(.:format)                                user_profile#show
 #
 
 Rails.application.routes.draw do
@@ -47,7 +50,13 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'company-detail', to: 'company#companies', as: :companies
+  get 'company_detail', to: 'company#companies', as: :company_detail
+
+  post 'user_profile', to: 'user_profile#update', as: :update_profile
+  delete 'user_profile', to: 'user_profile#destroy', as: :destroy_profile
+  get 'user_profile', to: 'user_profile#show', as: :show_profile
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
