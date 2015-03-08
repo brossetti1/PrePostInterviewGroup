@@ -32,8 +32,8 @@ Company.all.to_a.each do |company|
     Job.create(
       job_title: Faker::Name.title,
       lead_source: Faker::Name.name,
-      pro: Faker::Lorem.words(3),
-      con: Faker::Lorem.words(3),
+
+      
       short_summary: Faker::Lorem.sentence(3, true, 4),
       salary: Money.new(random_salary, "USD"),
       company_id: company.id,
@@ -51,6 +51,12 @@ def random_times(num)
 end
 
 Job.all.to_a.each do |job|
+  Con.create(job_id: job.id,
+             con: Faker::Lorem.words(3))
+
+  Pro.create(job_id: job.id,
+             pro: Faker::Lorem.words(3))
+
   random_times(3).times do
     Event.create(
       research: Faker::Lorem.sentence,

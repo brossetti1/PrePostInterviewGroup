@@ -32,7 +32,7 @@ gem 'devise'
 # for authorization
 # gem 'cancan'
 gem 'money'
-
+gem 'faker'
 gem 'pry-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -48,7 +48,6 @@ group :development, :test do
   gem 'byebug'
 
   gem 'sqlite3'
-  gem 'faker'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -63,9 +62,6 @@ group :development, :test do
   gem 'annotate'
   #watches your queries and lets you know what you should user counter cache, eager loading, etc.
   gem 'bullet'
-  #create external tunnel to localhost
-  gem 'ngrok-tunnel'
-
 end
 
 group :production do
