@@ -1,30 +1,41 @@
-== README
+## Pre-Post Interview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Iron Yard and Soltech put together a Hack-a-thon from March 6-8.  The following requirements were provided for this 44 hour hack-a-thon.
 
-Things you may want to cover:
+**Team members**:
 
-* Ruby version
+* Bob Holben - Front end
+* Jide Opeola - iOS
+* William Judd - iOS
+* Brian Rossetti - Ruby on Rails
+* William Jones - Ruby on Rails
 
-* System dependencies
+**Summary**:
 
-* Configuration
+This app makes organizing and tracking your job search activity easy while providing helpful tips along the way.
 
-* Database creation
+**Target Audience**:
 
-* Database initialization
+This application is geared towards people currently in the process of looking for a job.
 
-* How to run the test suite
+**Users**:
 
-* Services (job queues, cache servers, search engines, etc.)
+* Job seekers
 
-* Deployment instructions
+**Requirements / Suggested Features**:
 
-* ...
+* Create your profile and login info
+* Log of companies, short summary of opportunity, short summary of company, rating each opportunity on your interest level and lead source (brevity is key)
+* Save your resume on file to save easily
+* Date you submitted your resume
+* Phone, face-to-face and virtual interview tips
+* Pre-Interview Checklist (online research, interviewers, location info, obtain business cards for follow up, key findings)
+* Post interview checklist (recorded key takeaways, how did it go, describe the conversatoin, who you met with, thank you notes, follow up tracking, status updates to lead source if referred, ask recruiter to follow up on feedbac if applicable, other)
+* Time out your thank you notes (templates)
+* Post interview key takeaways (options for voice, text and voice-to-text memos)
+* Pros and cons of the opportunity
+* Quick page on UI that shows list of opportunities and ability to quickly pull up summary and status
 
-
-# Hackathon
 
 ## API End Point
 
@@ -105,6 +116,11 @@ allows a user to sign in. optionally, you can pass username or email as `:login 
 	}
 }
 ```
+from this point forward, any request sent by a user needs to include the authentication_token in the following format:
+	
+	- header format
+	  * Content-Type - application/json
+	  * 
 
 
 ##**log out**
@@ -202,4 +218,69 @@ allows a user to create a new company.
 	  	"user_id": 1
 	}
 }
+```
+##**request company details**
+<strong>This call returns details for all companies, jobs, and events for the requesting user(as indicated by the authentication token</strong>
+
+
+####Request
+
+`GET /company`
+
+
+{
+	"authentication_token": "MzqJ3rnpKyaVQE3cEwey"
+}
+
+
+####Response
+
+`Status: 200 ok`
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Goyette, Rippin and Shields",
+    "jobs": [
+      {
+        "job_id": 1,
+        "job_title": "historian",
+        "lead_source": "Jena Kiehn",
+        "short_summary": "Dens absorbeo minus et.",
+        "salary": 0,
+        "events": [
+          {
+            "event_id": 1,
+            "research": "Porro quis laboriosam iure assumenda.",
+            "key_findings": "Natus non delectus ut iste fugit facilis ea.",
+            "takeaways": "Eos nisi impedit quo quidem.",
+            "outcome": "Debitis nihil cum hic dolore ipsum eos voluptas.",
+            "thankyou_note": false,
+            "follow_up": false,
+            "referral": true,
+            "feedback": false,
+            "business_card": false
+            },
+          {
+            "event_id": 2,
+            "research": "Deleniti error repudiandae sed et explicabo animi.",
+            "key_findings": "Nisi quaerat corporis ut quisquam nihil.",
+            "takeaways": "Rerum illo dolor sit ut aut.",
+            "outcome": "Iure fugit qui sit molestias.",
+            "thankyou_note": true,
+            "follow_up": true,
+            "referral": false,
+            "feedback": true,
+            "business_card": true
+            },
+        ]
+    },
+      {
+        "job_id": 2,
+        "job_title": "Lead Communications Supervisor",
+        "lead_source": "Ivy Wunsch",
+        "short_summary": "Curvo tardus thalassinus auris suggero solium.",
+        "salary": 0,
+        "events": […
 ```
