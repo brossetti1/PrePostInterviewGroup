@@ -1,0 +1,1 @@
+json.jobs @company.jobs.map {|job| {job_id: job.id, job_title: job.job_title}}

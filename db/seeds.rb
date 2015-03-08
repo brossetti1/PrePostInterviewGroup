@@ -46,6 +46,11 @@ def random_bool
   rand(2) == 1 ? true : false
 end
 
+def random_date
+  random_days = rand(14) + 1
+  DateTime.now + random_days.days
+end
+
 def random_times(num)
   rand(num) + 1
 end
@@ -69,7 +74,8 @@ Job.all.to_a.each do |job|
       feedback: random_bool,
       business_card: random_bool,
       job_id: job.id,
-      user_id: job.user_id
+      user_id: job.user_id,
+      interview_date: random_date
       )
   end
 end

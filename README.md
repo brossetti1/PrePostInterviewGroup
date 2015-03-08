@@ -163,71 +163,48 @@ allows a user to create a new company.
 ```json
 {
   "company": {
-    "id": 3,
-    "name": "Delta"
-  }
-}
-```
-
-##**create a new job**
-
-####Request
-
-
-`POST /company/company_id/jobs`
-
-```json
-{
- 	"job": 
-    	{
-    	"job_title": "testingstuff", 
-    	"lead_source": "testingstuff",
-    	"pros": ["testing pro create","testprocreate","test_pro_create"],
-    	"cons": ["testing pro create","testprocreate","test_pro_create"],
-    	"short_summary": "testingstuff", 
-    	"salary": 1425352
+        "id": 3,
+        "name": "Delta"
     }
 }
 ```
 
+##**request list of Companies**
+
+####Request
+
+`GET /company`
+
 ####Response
 
-`Status: 201 Created`
+`Status: 200 ok`
 
 ```json
-{
-  	"job": {
-  		"job_id": "2",
-	  	"job_title": "testingstuff",
-	  	"lead_source": "testingstuff",
-	  	"short_summary": "testingstuff",
-	  	"salary": 1425352,
-	  	"cons": [
-	  		"testing pro create",
-	  		"testprocreate",
-	  		"test_pro_create"
-	  	],
-	  	"pros": [
-			"testing pro create",
-			"testprocreate",
-			"test_pro_create"
-      	],
-	  	"company_id": 1,
-	  	"created_at": "2015-03-08T00:05:13.312Z",
-	  	"updated_at": "2015-03-08T00:05:13.312Z",
-	  	"user_id": 1
-	}
-}
+[
+  {
+    "company_id": 9,
+    "name": "Sauer Inc"
+  },
+  {
+    "company_id": 10,
+    "name": "Muller Group"
+  },
+  {
+    "company_id": 13,
+    "name": "test co"
+  }
+]
 ```
 
 ##**request Company details**
+####**along with all Job and Event details
 
 <strong>This call returns details for all companies, jobs, and events for the requesting user(as indicated by the authentication token being sent)</strong>
 
 
 ####Request
 
-`GET /company`
+`GET /companies`
 
 ####Response
 
@@ -279,4 +256,97 @@ allows a user to create a new company.
         "short_summary": "Curvo tardus thalassinus auris suggero solium.",
         "salary": 0,
         "events": [
+```
+
+##**show jobs associated with a Company**
+
+####Request
+
+`GET /companies/:id`
+
+####Response
+
+`Status: 200 ok`
+
+
+```json
+{
+    "jobs": [
+        {
+            "job_id": 7,
+            "job_title": "Dynamic Communications Technician"
+        },
+        {
+            "job_id": 8,
+            "job_title": "Future Web Representative"
+        },
+        {
+            "job_id": 9,
+            "job_title": "Chief Creative Officer"
+        },
+        {
+            "job_id": 19,
+            "job_title": "Senior Paradigm Associate"
+        },
+        {
+            "job_id": 20,
+            "job_title": "Product Marketing Executive"
+        },
+        {
+            "job_id": 21,
+            "job_title": "Regional Tactics Developer"
+        }
+    ]
+}
+```
+
+##**create a new job**
+
+####Request
+
+
+`POST /company/company_id/jobs`
+
+```json
+{
+    "job": 
+        {
+        "job_title": "testingstuff", 
+        "lead_source": "testingstuff",
+        "pros": ["testing pro create","testprocreate","test_pro_create"],
+        "cons": ["testing pro create","testprocreate","test_pro_create"],
+        "short_summary": "testingstuff", 
+        "salary": 1425352
+    }
+}
+```
+
+####Response
+
+`Status: 201 Created`
+
+```json
+{
+    "job": {
+        "job_id": "2",
+        "job_title": "testingstuff",
+        "lead_source": "testingstuff",
+        "short_summary": "testingstuff",
+        "salary": 1425352,
+        "cons": [
+            "testing pro create",
+            "testprocreate",
+            "test_pro_create"
+        ],
+        "pros": [
+            "testing pro create",
+            "testprocreate",
+            "test_pro_create"
+        ],
+        "company_id": 1,
+        "created_at": "2015-03-08T00:05:13.312Z",
+        "updated_at": "2015-03-08T00:05:13.312Z",
+        "user_id": 1
+    }
+}
 ```

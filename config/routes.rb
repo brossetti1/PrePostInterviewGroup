@@ -29,9 +29,11 @@
 #                          DELETE /company/:company_id/jobs/:id(.:format)                jobs#destroy
 #            company_index GET    /company(.:format)                                     company#index
 #                          POST   /company(.:format)                                     company#create
-#                  company PATCH  /company/:id(.:format)                                 company#update
+#                  company GET    /company/:id(.:format)                                 company#show
+#                          PATCH  /company/:id(.:format)                                 company#update
 #                          PUT    /company/:id(.:format)                                 company#update
 #                          DELETE /company/:id(.:format)                                 company#destroy
+#                companies GET    /company-detail(.:format)                              company#companies
 #
 
 Rails.application.routes.draw do
@@ -39,13 +41,13 @@ Rails.application.routes.draw do
                                       :sessions => "sessions" }
 
 
-
-
-  resources :company, only: [:index, :create, :index, :update, :destroy] do
+  resources :company, only: [:index, :create, :show, :update, :destroy] do
     resources :jobs, only: [:index, :create, :show, :update, :destroy] do
       resources :events, only: [:index, :create, :index, :update, :destroy]
     end
   end
+
+  get 'company-detail', to: 'company#companies', as: :companies
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

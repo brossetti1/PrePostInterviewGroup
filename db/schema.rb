@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307214509) do
+ActiveRecord::Schema.define(version: 20150308030541) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street1"
@@ -60,15 +60,16 @@ ActiveRecord::Schema.define(version: 20150307214509) do
     t.text     "key_findings"
     t.text     "takeaways"
     t.text     "outcome"
-    t.boolean  "thankyou_note", default: false
-    t.boolean  "follow_up",     default: false
-    t.boolean  "referral",      default: false
-    t.boolean  "feedback",      default: false
-    t.boolean  "business_card", default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.boolean  "thankyou_note",  default: false
+    t.boolean  "follow_up",      default: false
+    t.boolean  "referral",       default: false
+    t.boolean  "feedback",       default: false
+    t.boolean  "business_card",  default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "job_id"
     t.integer  "user_id"
+    t.datetime "interview_date"
   end
 
   create_table "jobs", force: :cascade do |t|

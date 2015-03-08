@@ -1,9 +1,20 @@
 class CompanyController < ApplicationController
   before_action :authentication_user_from_token!
-  before_action :set_companies
+  before_action :set_companies, only: [:index, :companies]
+  before_action :find_company, only: [:show, :update, :destroy]
+
 
   def index
     render "company/index.json.jbuilder", status: :ok
+  end
+    
+  #returns a list of all users companies, jobs, and events.
+  def companies
+    render "company/companies.json.jbuilder", status: :ok
+  end
+
+  def show
+    render "company/show.json.jbuilder", status: :ok
   end
 
   def create
@@ -20,7 +31,7 @@ class CompanyController < ApplicationController
   end
 
   def destroy
-
+    @company.destroy
   end
 
   private
@@ -28,31 +39,9 @@ class CompanyController < ApplicationController
     @companies = current_user.companies
   end
 
+  def find_company
+    @company = Company.find(params[:id])
+  end
+
 end
 
-
-
-# user_id
-# @companies.each do |company|
-#   puts company.id
-#   puts company.name
-#   company.jobs.each do |job|
-#     job.id
-#     job.job_title
-#     job.lead_source
-#     job.short_summary
-#     job.salary
-#     job.events.each do |event|
-#       event.id
-#       event.research
-#       event.key_findings
-#       event.takeaways
-#       event.outcome
-#       event.thankyou_note
-#       event.follow_up
-#       event.referral
-#       event.feedback
-#       event.business_card
-  
-#   end
-# end
