@@ -9,7 +9,8 @@ class UserProfileController < ApplicationController
   def update
     current_user.update_attributes(user_params)
     if current_user.address
-      @address = current_user.address.update_attributes(address_params)
+      @address = current_user.address
+      @address.update_attributes(address_params)
     else
       @address = Address.new(address_params)
       @address.user_id = current_user.id

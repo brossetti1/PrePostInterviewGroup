@@ -19,7 +19,7 @@
 #       company_job_events GET    /company/:company_id/jobs/:job_id/events(.:format)     events#index
 #                          POST   /company/:company_id/jobs/:job_id/events(.:format)     events#create
 #        company_job_event PATCH  /company/:company_id/jobs/:job_id/events/:id(.:format) events#update
-#                          PUT    /company/:company_id/jobs/:job_id/events/:id(.:format) events#update
+#                          PUT    /company/ :company_id/jobs/:job_id/events/:id(.:format) events#update
 #                          DELETE /company/:company_id/jobs/:job_id/events/:id(.:format) events#destroy
 #             company_jobs GET    /company/:company_id/jobs(.:format)                    jobs#index
 #                          POST   /company/:company_id/jobs(.:format)                    jobs#create
