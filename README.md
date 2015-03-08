@@ -169,7 +169,7 @@ allows a user to create a new company.
 }
 ```
 
-##**create new company**
+##**create a new job**
 
 ####Request
 
@@ -219,8 +219,10 @@ allows a user to create a new company.
 	}
 }
 ```
-##**request company details**
-<strong>This call returns details for all companies, jobs, and events for the requesting user(as indicated by the authentication token</strong>
+
+##**request Company details**
+
+<strong>This call returns details for all companies, jobs, and events for the requesting user(as indicated by the authentication token being sent)</strong>
 
 
 ####Request
