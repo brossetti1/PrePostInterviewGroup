@@ -7,15 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-2.times do |n|
+1.times do |n|
   User.create(
-    username: "fake_user_#{n}",
-    email: Faker::Internet.email,
+    username: 'BobbyHolbenStein',
+    email: 'bholben@gmail.com',
     password: 'password')
 end
 
 User.all.to_a.each do |user|
-  2.times do
+  5.times do
     Company.create(
       name: Faker::Company.name,
       user_id: user.id)
@@ -28,7 +28,7 @@ def random_salary
 end
 
 Company.all.to_a.each do |company|
-  3.times do
+  random_times(6).times do
     Job.create(
       job_title: Faker::Name.title,
       lead_source: Faker::Name.name,
@@ -37,7 +37,7 @@ Company.all.to_a.each do |company|
       short_summary: Faker::Lorem.sentence(3, true, 4),
       salary: Money.new(random_salary, "USD"),
       company_id: company.id,
-      user_id: company.user_id,
+      user_id: company.user_id
       )
   end
 end
