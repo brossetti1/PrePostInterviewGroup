@@ -38,7 +38,7 @@ This application is geared towards people currently in the process of looking fo
 
 ###back-end data-model
 
-![alt tag](http://imgur.com/MkafElT)
+![Imgur](http://i.imgur.com/MkafElT.png)
 
 ## API End Point
 
