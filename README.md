@@ -356,7 +356,7 @@ allows a user to create a new company.
 ####Request
 
 
-`POST /company/company_id/jobs`
+`POST /company/:company_id/jobs`
 
 ```json
 {
@@ -406,7 +406,7 @@ allows a user to create a new company.
 
 ####Request
 
-`GET /company/company_id/jobs`
+`GET /company/:company_id/jobs`
 
 ####Response
 
@@ -455,7 +455,7 @@ allows a user to create a new company.
 
 ####Request
 
-`PATCH /company/company_id/jobs`
+`PATCH /company/:company_id/jobs`
 
 ```json
 {
