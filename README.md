@@ -167,6 +167,7 @@ currently, there is no response on sign out because each request handles every a
 
 ####Response
 
+```json
 {
     "user": {
         "email": "jadyn@schneider.com",
@@ -179,6 +180,7 @@ currently, there is no response on sign out because each request handles every a
         "full_address": null
     }
 }
+```
 
 ##**create new company**
 
@@ -249,6 +251,7 @@ This route was segmented for ios to POST all the data for creating a company, jo
 
 `Status: 201 Created`
 
+```json
 {
     "company": {
         "company_id": 22,
@@ -279,6 +282,7 @@ This route was segmented for ios to POST all the data for creating a company, jo
         "business_card": false
     }
 }
+```
 
 ##**request list of Companies**
 
