@@ -28,5 +28,3 @@ class UserProfileController < ApplicationController
   end
 
 end
-
-

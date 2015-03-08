@@ -51,7 +51,8 @@ Rails.application.routes.draw do
   end
 
   get 'company_detail', to: 'company#companies', as: :company_detail
-
+  post 'icompany', to: 'company#ios_create', as: :ios_create
+  
   patch 'user_profile', to: 'user_profile#update', as: :update_profile
   delete 'user_profile', to: 'user_profile#destroy', as: :destroy_profile
   get 'user_profile', to: 'user_profile#show', as: :show_profile

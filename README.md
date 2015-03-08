@@ -185,6 +185,7 @@ currently, there is no response on sign out because each request handles every a
 
 ####Request
 
+allows a user to create a new company.
 
 `POST /company`
 
@@ -195,7 +196,7 @@ currently, there is no response on sign out because each request handles every a
 }
 ```
 
-allows a user to create a new company.
+
 
 ####Response
 
@@ -203,12 +204,82 @@ allows a user to create a new company.
 
 ```json
 {
-  "company": {
+    "company": {
         "id": 3,
         "name": "Delta"
     }
 }
 ```
+
+
+##**create a new company with event hiearchy**
+
+####Request
+
+This route was segmented for ios to POST all the data for creating a company, job, and event. 
+
+`POST /icompany`
+
+```json
+{
+    "company": {
+        "name": "Delta",
+        "job_title": "bag boy",
+        "lead_source": "miffy",
+        "short_summary": "fly around the world and party",
+        "salary": 123121,
+        "street1": "81300 Eric Port",
+        "street2": "Suite 931",
+        "city": "East Karifurt",
+        "state": "WV",
+        "zipcode": "78348"
+        },
+    
+    "pro": [
+          "this job rocks"
+    ],
+    
+    "con": [
+          
+    ]
+}
+```
+
+
+####Response
+
+`Status: 201 Created`
+
+{
+    "company": {
+        "company_id": 22,
+        "name": "Delta",
+        "job_id": 61,
+        "job_title": "bag boy",
+        "lead_source": "miffy",
+        "short_summary": "fly around the world and party",
+        "salary": 123121,
+        "pros": [
+        "this job rocks"
+    ],
+        "street1": "81300 Eric Port",
+        "street2": "Suite 931",
+        "city": "East Karifurt",
+        "state": "WV",
+        "zipcode": "78348",
+        "full_address": null,
+        "event_id": 131,
+        "research": null,
+        "key_findings": null,
+        "takeaways": null,
+        "outcome": null,
+        "thankyou_note": false,
+        "follow_up": false,
+        "referral": false,
+        "feedback": false,
+        "business_card": false
+    }
+}
 
 ##**request list of Companies**
 
@@ -313,7 +384,7 @@ allows a user to create a new company.
 
 ####Request
 
-`GET /companies/:id`
+`GET /company/:id`
 
 ####Response
 
@@ -402,7 +473,9 @@ allows a user to create a new company.
 }
 ```
 
-##**create a new job**
+##**list of jobs**
+
+This call returns a list of all jobs belonging to a specific company.
 
 ####Request
 
@@ -438,9 +511,9 @@ allows a user to create a new company.
         "short_summary": "Repellendus cernuus voluptatibus amplus.",
         "salary": 0,
         "pros": [
-        "distinctio",
-        "fugiat",
-        "impedit"
+            "distinctio",
+            "fugiat",
+            "impedit"
         ],
         "cons": [
             "natus",
@@ -451,7 +524,43 @@ allows a user to create a new company.
 ]
 ```
 
-##**update a job**
+##**show details of one job**
+
+####Request
+
+`GET /company/:company_id/jobs/:id`
+
+####Response
+
+`Status: 200 ok`
+
+
+```json
+{
+    "job": {
+        "job_title": "testing",
+        "lead_source": "testing",
+        "pros": [
+            "aut",
+            "veritatis",
+            "maiores"
+        ],
+        "cons": [
+            "natus",
+            "corrupti",
+            "ab"
+        ],
+        "short_summary": "testing",
+        "salary": 1231214,
+        "company_id": 1,
+        "created_at": "2015-03-08T07:49:10.145Z",
+        "updated_at": "2015-03-08T08:10:52.330Z",
+        "user_id": 1
+    }
+}
+```
+
+##**Update a Job**
 
 ####Request
 
