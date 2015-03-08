@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   before_save :ensure_authentication_token
+  after_create :add_address
   has_one :address
   has_one :contact
   has_many :companies
@@ -32,6 +33,13 @@ class User < ActiveRecord::Base
   has_many :events
 
 
+
+
+
+  def add_address
+    address = Address.new(user_id: self.id)
+    address.save
+  end
 
 
   def ensure_authentication_token
@@ -48,3 +56,4 @@ class User < ActiveRecord::Base
   end 
 
 end
+

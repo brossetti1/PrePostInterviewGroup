@@ -4,6 +4,6 @@ json.array! @jobs do |job|
 	json.lead_source job.lead_source
 	json.short_summary job.short_summary
 	json.salary job.salary
-	json.pros job.pros.map(&:pro)
-	json.cons job.cons.map(&:con)
+	json.pros JSON.parse(job.pros.pluck(:pro).first)
+	json.cons JSON.parse(job.cons.pluck(:con).first)
 end

@@ -49,8 +49,8 @@ This application is geared towards people currently in the process of looking fo
 
 an authentication token will be generated when a user is created. the authentication token will be passed from the backend when a user successfully logs in. After login, the authentication token will have to come with each request in either of the below formats in order to avoid an "authentication failure". The formats are as follows:
 	
-*sent in the **header** as "authentication_token": "xV47wpXmfMB4zMCL3sk"
-*unnested and sent in the **body** as "authentication_token": "xV47wpXmfMB4zMCL3s-k"
+- sent in the **header** as "authentication_token": "xV47wpXmfMB4zMCL3sk"
+- **unnested** and sent in the **body** as "authentication_token": "xV47wpXmfMB4zMCL3s-k"
 
 ##Responses
 
@@ -106,10 +106,18 @@ error examples:
 
 ```json
 {
-	"user": {
-		"email": "testing@testing.com",
-		"password": "password",
-	   }
+    "user": {
+        "user_id": 2,
+        "username": "fake_user_1",
+        "email": "jadyn@schneider.com",
+        "authentication_token": "c4p7FeDEyCUx4BvP_1jM",
+        "street1": "81300 Eric Port",
+        "street2": "Suite 931",
+        "city": "East Karifurt",
+        "state": "WV",
+        "zipcode": "78348",
+        "full_address": null
+    }
 }
 ```
 
@@ -134,11 +142,44 @@ allows a user to sign in. optionally, you can pass username or email as `:login 
 
 ####Request
 
-`DELETE users/sign_out`
+`DELETE /users/sign_out`
 
 ####Response
 currently, there is no response on sign out because each request handles every api call.
 
+##**update User Profile**
+
+####Request
+
+`PATCH /user_profile`
+
+```json
+{
+    "user": {
+        "street1": "81300 Eric Port",
+        "street2": "Suite 931",
+        "city": "East Karifurt",
+        "state": "WV",
+        "zipcode": "78348",
+        "username": "testuser"
+    }
+}
+```
+
+####Response
+
+{
+    "user": {
+        "email": "jadyn@schneider.com",
+        "username": "testuser",
+        "street1": "81300 Eric Port",
+        "street2": "Suite 931",
+        "city": "East Karifurt",
+        "state": "WV",
+        "zipcode": "78348",
+        "full_address": null
+    }
+}
 
 ##**create new company**
 
@@ -221,7 +262,17 @@ allows a user to create a new company.
         "job_title": "historian",
         "lead_source": "Jena Kiehn",
         "short_summary": "Dens absorbeo minus et.",
-        "salary": 0,
+        "salary": 10000000,
+        "pros": [
+            "in",
+            "est",
+            "quasi"
+        ],
+            "cons": [
+            "saepe",
+            "nisi",
+            "illum"
+        ],
         "events": [
           {
             "event_id": 1,
@@ -347,6 +398,115 @@ allows a user to create a new company.
         "created_at": "2015-03-08T00:05:13.312Z",
         "updated_at": "2015-03-08T00:05:13.312Z",
         "user_id": 1
+    }
+}
+```
+
+##**create a new job**
+
+####Request
+
+`GET /company/company_id/jobs`
+
+####Response
+
+`Status: 200 ok`
+
+```json
+[
+    {
+        "job_id": 43,
+        "job_title": "Legacy Metrics Director",
+        "lead_source": "Mr. Ted Dickens",
+        "short_summary": "Coadunatio aduro combibo aut.",
+        "salary": 0,
+        "pros": [
+            "error",
+            "commodi",
+            "temporibus"
+        ],
+        "cons": [
+            "deleniti",
+            "ducimus",
+            "dolorum"
+        ]
+    },
+    {
+        "job_id": 44,
+        "job_title": "Corporate Brand Engineer",
+        "lead_source": "Dayna Goyette",
+        "short_summary": "Repellendus cernuus voluptatibus amplus.",
+        "salary": 0,
+        "pros": [
+        "distinctio",
+        "fugiat",
+        "impedit"
+        ],
+        "cons": [
+            "natus",
+            "corrupti",
+            "ab"
+        ]
+    }
+]
+```
+
+##**update a job**
+
+####Request
+
+`PATCH /company/company_id/jobs`
+
+```json
+{
+    "job":
+        {
+      "job_title" : "testing",
+      "lead_source" : "testing",
+      "short_summary" : "testing",
+      "salary": "1231214",
+       "pros": [
+            "error",
+            "commodi",
+            "temporibus"
+        ],
+        "cons": [
+            "deleniti",
+            "ducimus",
+            "dolorum"
+        ]
+    }
+}
+```
+
+
+####Response
+
+`Status: 200 ok`
+
+
+```json
+{
+    "job": {
+        "job_id": 49,
+        "job_title": "testing",
+        "lead_source": "testing",
+        "short_summary": "testing",
+        "salary": 1231214,
+        "pros": [
+            "error",
+            "commodi",
+            "temporibus"
+        ],
+        "cons": [
+            "deleniti",
+            "ducimus",
+            "dolorum"
+        ],
+        "company_id": 11,
+        "created_at": "2015-03-08T08:25:20.658Z",
+        "updated_at": "2015-03-08T08:25:20.658Z",
+        "user_id": 2
     }
 }
 ```

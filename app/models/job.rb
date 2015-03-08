@@ -25,6 +25,13 @@ class Job < ActiveRecord::Base
   serialize :pro
   serialize :con
 
+
+
+
+  def attr_changed?
+    self.previous_changes.count == 0 ? false : true
+  end
+
 end
 
 

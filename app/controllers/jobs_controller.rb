@@ -14,7 +14,7 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-    @job.company_id = @coompany.id; @job.user_id = current_user.id 
+    @job.company_id = @company.id; @job.user_id = current_user.id 
     @job.save; make_pros(@job.id); make_cons(@job.id)
     if @job.id?
       render "jobs/create.json.jbuilder", status: :created
@@ -27,15 +27,8 @@ class JobsController < ApplicationController
   end
 
   def update
-    @job_cp = @job.dup
-    #TODO check error if errors or if no changes???
     @job.update_attributes(job_params)
-    excpt_attr = 'id','created_at','updated_at'
-    if @job.attributes.except(excpt_attr) != @job_cp.attributes.except(excpt_attr)
-      render "jobs/update.json.jbuilder, status :created"
-    else
-      render json: { error: @job.errors.full_messages }, status: :unprocessable_entity
-    end
+    render "jobs/update.json.jbuilder, status :created", status: :ok
   end
 
   def destroy
@@ -72,5 +65,6 @@ class JobsController < ApplicationController
       end
     end
   end
+
 
 end

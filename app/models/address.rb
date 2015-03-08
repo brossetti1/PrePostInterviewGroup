@@ -20,4 +20,12 @@ class Address < ActiveRecord::Base
   belongs_to :contact
   belongs_to :user
   belongs_to :job
+
+
+
+  def attr_changed?
+    self.previous_changes.count == 0 ? false : true
+  end
+
+
 end

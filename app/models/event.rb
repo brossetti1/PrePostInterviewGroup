@@ -24,3 +24,4 @@ class Event < ActiveRecord::Base
   has_many :contacts, dependent: :destroy
   belongs_to :user
 end
+

@@ -6,6 +6,8 @@ json.array! @companies do |company|
 		json.lead_source job.lead_source
 		json.short_summary job.short_summary
 		json.salary job.salary
+		json.pros JSON.parse(job.pros.pluck(:pro).first)
+		json.cons JSON.parse(job.cons.pluck(:con).first)
 		json.events job.events do |event|
 			json.event_id event.id
 			json.research event.research
@@ -17,7 +19,6 @@ json.array! @companies do |company|
 			json.referral event.referral
 			json.feedback event.feedback
 			json.business_card event.business_card
-		
 		end
 	end	
 end

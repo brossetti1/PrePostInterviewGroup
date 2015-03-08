@@ -52,7 +52,7 @@ Rails.application.routes.draw do
 
   get 'company_detail', to: 'company#companies', as: :company_detail
 
-  post 'user_profile', to: 'user_profile#update', as: :update_profile
+  patch 'user_profile', to: 'user_profile#update', as: :update_profile
   delete 'user_profile', to: 'user_profile#destroy', as: :destroy_profile
   get 'user_profile', to: 'user_profile#show', as: :show_profile
   

@@ -95,11 +95,12 @@ Event.all.to_a.each do |event|
     phone: Faker::PhoneNumber.phone_number,
     mobile: Faker::PhoneNumber.cell_phone,
     do_not_call: random_bool,
-    background_info: Faker::Lorem.sentence)
+    background_info: Faker::Lorem.sentence
+    )
 end
 
 User.all.to_a.each do |user|
-  Address.create(
+  user.address.update_attributes(
     street1: Faker::Address.street_address,
     street2: Faker::Address.secondary_address,
     city: Faker::Address.city,

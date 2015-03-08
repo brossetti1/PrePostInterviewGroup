@@ -3,6 +3,7 @@ class SessionsController < Devise::SessionsController
   def create
     self.resource = warden.authenticate(auth_options)
     if self.resource
+      @address = resource.address
       sign_in(resource_name, resource, store: false)
       render "users/sign_in.json.jbuilder", status: :ok
     else
