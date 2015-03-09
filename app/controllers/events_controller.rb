@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     if @upcoming_events
       render json: "users/upcoming_events.json.jbuilder", status: :ok
     else
-      render json: { @upcoming_events.errors.full_messages }, status: :bad_request
+      nil# render json: { @upcoming_events.errors.full_messages }, status: :bad_request
     end
   end
 
